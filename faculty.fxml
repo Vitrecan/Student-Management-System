@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.GridPane?>	
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?> 
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="center" 
+      fx:controller="controller.FacultyController" spacing="10" 
+      styleClass="background" prefHeight="400.0" prefWidth="600.0">
+    
+    <stylesheets> 
+        <URL value="@tmsfx.css"/> 
+    </stylesheets>
+    
+    <VBox alignment="TOP_LEFT">
+        <Label text="Filters" styleClass="label-h2"/>
+    </VBox>
+    
+    <HBox alignment="CENTER" spacing="20">
+        <Label text="Name:" styleClass="label-opac"/>
+        <TextField fx:id="nameTf" promptText="Filter by name"/>
+        
+        <Label text="Email:" styleClass="label-opac"/>
+        <TextField fx:id="emailTf" promptText="Filter by email"/>
+    </HBox>
+    
+    <Separator/>
+    
+    <TableView fx:id="studentsTv" items="${controller.faculty.students}">
+        <placeholder>
+            <Label text="Students list is not loaded" styleClass="text-out"/>
+        </placeholder>
+        <columns>
+            <TableColumn text="Name" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="name"/>
+                </cellValueFactory>
+            </TableColumn>
+            
+            <TableColumn text="Email" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="email"/>
+                </cellValueFactory>
+            </TableColumn>
+            
+            <TableColumn text="Phone" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="phone"/>
+                </cellValueFactory>
+            </TableColumn> 
+        </columns>
+    </TableView>
+    
+    <Separator/>
+    
+    <HBox spacing="10">
+        <Button text="Add" fx:id="addBtn" onAction="#handleAdd"/>
+        <Button text="Delete" fx:id="deleteBtn" onAction="#handleDelete"/>
+        <Button text="Select" fx:id="selectBtn" onAction="#handleSelect" disable="true"/>
+        <Button text="SLIP" fx:id="slipBtn" onAction="#handleSlip" disable="true"/>
+        <Button text="Report" fx:id="reportBtn" onAction="#handleReport"/>
+        <Button text="Close" fx:id="closeBtn" onAction="#handleClose"/>
+    </HBox>
+    
+</VBox>
